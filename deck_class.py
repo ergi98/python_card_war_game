@@ -1,15 +1,9 @@
 from card_class import Card
 from random import shuffle, randrange
 
-class Deck():
-	suits = ("Heart", "Diamonds", "Clubs", "Spades")
-	ranks = (
-		"2", "3", "4", 
-		"5", "6", "7",
-		"8", "9", "10", 
-		"J", "Q", "K", "A"
-	)
+from constants import RANKS, SUITS
 
+class Deck():
 	def __init__(self, cards = []):
 		self.cards = cards
 
@@ -17,8 +11,8 @@ class Deck():
 		'''
 		Fill the deck with all the cards
 		'''
-		for suit in self.suits:
-			for rank in self.ranks:
+		for suit in SUITS:
+			for rank in RANKS:
 				self.cards.append(Card(suit, rank))
 
 	def deal_cards_to_players(self):

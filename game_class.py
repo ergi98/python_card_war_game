@@ -1,6 +1,8 @@
 from deck_class import Deck
 from random import choice
 
+from constants import PLAYER_ONE, PLAYER_TWO
+
 class Game():
 	game_deck = Deck()
 	p1_round_cards = []
@@ -17,10 +19,10 @@ class Game():
 		print(f'No of cards left for Player 1: {len(self.p1_cards)}')
 		print(f'No of cards left for Player 2: {len(self.p2_cards)}')
 		if self.p1_cards.no_cards_left():
-			winner = 'player_two'
+			winner = PLAYER_TWO
 			print('Game is over. Winner is Player 2!')
 		elif self.p2_cards.no_cards_left():
-			winner = 'player_two'
+			winner = PLAYER_ONE
 			print('Game is over. Winner is Player 1!')
 		return winner
 
@@ -48,15 +50,12 @@ class Game():
 		return (p1_card, p2_card)
 
 	def add_cards_to_winner(self, p1_card, p2_card):
-		winner = None
 		if p1_card.value > p2_card.value:
 			print('Round is over. Winner is Player 1!')
 			self.p1_cards.add_to_deck(self.p2_round_cards)
-			winner = 'player_one'
 		elif p1_card.value < p2_card.value:
 			print(f'Round is over. Winner is Player 2!')
 			self.p2_cards.add_to_deck(self.p1_round_cards)
-			winner = 'player_two'
 
 		print(f'Player 1 has {len(self.p1_cards)} cards remaining')
 		print(f'Player 2 has {len(self.p2_cards)} cards remaining')
