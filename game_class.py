@@ -52,10 +52,15 @@ class Game():
 	def add_cards_to_winner(self, p1_card, p2_card):
 		if p1_card.value > p2_card.value:
 			print('Round is over. Winner is Player 1!')
+  		# Add the cards of the losing player  
 			self.p1_cards.add_to_deck(self.p2_round_cards)
+			# Add the cards you are playing this round
+			self.p1_cards.add_to_deck(self.p1_round_cards)
 		elif p1_card.value < p2_card.value:
 			print(f'Round is over. Winner is Player 2!')
 			self.p2_cards.add_to_deck(self.p1_round_cards)
+			self.p2_cards.add_to_deck(self.p2_round_cards)
+   
 
 		print(f'Player 1 has {len(self.p1_cards)} cards remaining')
 		print(f'Player 2 has {len(self.p2_cards)} cards remaining')

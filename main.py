@@ -1,16 +1,18 @@
 '''
-	Implementation of Card War Game
-	https://en.wikipedia.org/wiki/War_(card_game)
+Implementation of Card War Game
+https://en.wikipedia.org/wiki/War_(card_game)
 '''
 from game_class import Game
 
 def main():
 
+	round = 1;
 	game = Game()
 	game_winner = game.get_winner()
 
 	# Continue playing until one of the decks empties up
 	while game_winner == None:
+		print(f'-------- Round {round} ---------')
 		game.draw_random_cards_for_each_player(amount = 1)
 		p1_card, p2_card  = game.select_random_card_from_drawn_cards()
 		# As long as we keep getting same value cards
@@ -24,8 +26,9 @@ def main():
 		game.reset_round_cards()
 		game_winner = game.get_winner()
 
-		print('\n')
-		print('\n')
-		
+		round += 1
+
+		print("\n")
+	
 if __name__ == "__main__":
 	main()
